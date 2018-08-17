@@ -1,10 +1,10 @@
-@mixin HELPER-stars($height:16px,$max:5,) {
+@mixin HELPER-stars($height:16px,$max:5,$colors:(base:"#dddddd" , rate:"#f1c40f" ,hover:"#e9d06c" ) ) {
   position: relative;
   width: ($height*$max);
   display: inline-block;
   height: $height;
   &:before {
-      background-image: url('<svg clip-rule="evenodd" fill-rule="evenodd" image-rendering="optimizeQuality" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" version="1.1" viewBox="0 0 1063 1063" xmlns="http://www.w3.org/2000/svg">  <path fill="#9D9AAB" d="m532 841c-171 0-309-139-309-309 0-171 138-309 309-309 170 0 309 138 309 309 0 170-139 309-309 309zm372-221 159-88-159-89v177zm-744-177-160 89 160 88v-177zm372 620 88-159h-177l89 159zm0-1063-89 160h177l-88-160zm-326 732-50 176 175-50-125-126zm526-526 126 125 50-175-176 50zm-576-50 50 175 125-125-175-50zm576 702 176 50-50-176-126 126z"/></svg>');
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.0' x='0px' y='0px' viewBox='0 0 50 50' fill='%23#{str-slice(map-get($colors,base),2,str-length(map-get($colors,base)))}' %3E%3Cpath d='M 25 2.2734375 L 18.609375 18.480469 L 0.81054688 19.417969 L 14.648438 30.412109 L 10.070312 47.222656 L 25 37.771484 L 39.929688 47.222656 L 35.351562 30.412109 L 49.189453 19.417969 L 31.390625 18.480469 L 25 2.2734375 z'%3E%3C/path%3E%3C/svg%3E");
       background-repeat: repeat-x;
       background-size: auto 100% ;
       bottom: 0;
@@ -20,7 +20,7 @@
   }
   &:after {
     background-repeat: repeat-x;
-    background-image:  url('<svg clip-rule="evenodd" fill-rule="evenodd" image-rendering="optimizeQuality" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" version="1.1" viewBox="0 0 1063 1063" xmlns="http://www.w3.org/2000/svg">  <path fill="#6b80ab" d="m532 841c-171 0-309-139-309-309 0-171 138-309 309-309 170 0 309 138 309 309 0 170-139 309-309 309zm372-221 159-88-159-89v177zm-744-177-160 89 160 88v-177zm372 620 88-159h-177l89 159zm0-1063-89 160h177l-88-160zm-326 732-50 176 175-50-125-126zm526-526 126 125 50-175-176 50zm-576-50 50 175 125-125-175-50zm576 702 176 50-50-176-126 126z"/></svg>');
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.0' x='0px' y='0px' viewBox='0 0 50 50' fill='%23#{str-slice(map-get($colors,rate),2,str-length(map-get($colors,rate)))}' %3E%3Cpath d='M 25 2.2734375 L 18.609375 18.480469 L 0.81054688 19.417969 L 14.648438 30.412109 L 10.070312 47.222656 L 25 37.771484 L 39.929688 47.222656 L 35.351562 30.412109 L 49.189453 19.417969 L 31.390625 18.480469 L 25 2.2734375 z'%3E%3C/path%3E%3C/svg%3E");
     background-size: (($height*$max)/$max);
     content: "";
     display: block;
@@ -33,5 +33,8 @@
     &[data-rating='#{($max*2 - $i)*0.5}']:after {
      width:($height*$max)*(($max*2 - $i)/($max*2));
     }
+  }
+  &:hover:after {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.0' x='0px' y='0px' viewBox='0 0 50 50' fill='%23#{str-slice(map-get($colors,hover),2,str-length(map-get($colors,hover)))}' %3E%3Cpath d='M 25 2.2734375 L 18.609375 18.480469 L 0.81054688 19.417969 L 14.648438 30.412109 L 10.070312 47.222656 L 25 37.771484 L 39.929688 47.222656 L 35.351562 30.412109 L 49.189453 19.417969 L 31.390625 18.480469 L 25 2.2734375 z'%3E%3C/path%3E%3C/svg%3E");
   }
 }
